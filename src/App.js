@@ -1,8 +1,12 @@
+import { ThemeProvider } from 'styled-components';
+
+import { theme } from './themes';
+
 function App() {
   return (
-    <div className='App'>
+    <ThemeProvider theme={theme}>
       <h1>Pokedex</h1>
-    </div>
+    </ThemeProvider>
   );
 }
 
