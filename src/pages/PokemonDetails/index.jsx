@@ -26,7 +26,7 @@ const types = ['Stats', 'Evolves From', 'Moves'];
 
 export const PokemonDetails = () => {
   const params = useParams();
-  const { pokemons } = useContext(PokemonsContex);
+  const { pokemons, pokedex, setPokedex } = useContext(PokemonsContex);
   const [pokemonSpecie, setPokemonSpecie] = useState({});
   const [active, setActive] = useState(types[0]);
 
@@ -50,10 +50,35 @@ export const PokemonDetails = () => {
   );
   const pokemonType = pokemonDetails?.types[0]?.type?.name;
 
+  const handleAddPokemonInPokedex = (pokemon) => {
+    const pokemonExistInPokedex = pokedex.find((p) => p.id === pokemon.id);
+
+    if (pokemonExistInPokedex) {
+      alert('This pokemon has already been captured');
+      return;
+    }
+
+    setPokedex([...pokedex, pokemon]);
+    alert('Pokemon captured! :)');
+  };
+
   if (pokemonDetails)
     return (
       <Container>
-        <FrontCover type={pokemonType} />
+        <FrontCover type={pokemonType}>
+          <div>
+            <button
+              type='button'
+              onClick={() => handleAddPokemonInPokedex(pokemonDetails)}
+            >
+              <img
+                src='	https://www.pngkey.com/png/full/144-1446994_pokeball-clipart-transparent-background-pokeball-png.png'
+                alt='Pokebola'
+              />
+              Adiconar a pokedex
+            </button>
+          </div>
+        </FrontCover>
         <Content>
           <WrapperImg>
             <img
@@ -61,7 +86,6 @@ export const PokemonDetails = () => {
               alt={pokemonDetails.name}
             />
           </WrapperImg>
-
           <InfoPokemon>
             <h1>{pokemonDetails.name}</h1>
             <div>

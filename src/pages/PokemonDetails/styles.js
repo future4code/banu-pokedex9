@@ -10,6 +10,39 @@ export const FrontCover = styled.div`
   background: ${({ type, theme }) => (type ? theme[type].color : '#444')};
   width: 100%;
   height: 30rem;
+
+  > div {
+    width: 100%;
+    max-width: 120rem;
+    margin: 0 auto;
+    height: 100%;
+    padding: 2rem;
+  }
+
+  button {
+    height: 4.8rem;
+    padding: 1rem 3rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-left: auto;
+    color: inherit;
+    border-radius: 4.8rem;
+    border: 0;
+    cursor: pointer;
+    background: #fff;
+    transition: all 0.2s ease;
+
+    &:hover {
+      filter: brightness(0.8);
+    }
+
+    img {
+      width: 2rem;
+      height: 2rem;
+      margin-top: -3px;
+    }
+  }
 `;
 
 export const Content = styled.div`
