@@ -16,29 +16,33 @@ import {
   TabsContainer,
   StatsBar,
   StatsName,
+  BoxEvolution,
+  MovesList,
 } from './styles';
+
+import arrowRightIcon from '../../img/arrow_right.svg';
 
 const types = ['Stats', 'Evolution', 'Moves'];
 
 export const PokemonDetails = () => {
   const params = useParams();
   const { pokemons } = useContext(PokemonsContex);
-  const [evolutions, setEvolutions] = useState({});
+  const [pokemonSpecie, setPokemonSpecie] = useState({});
   const [active, setActive] = useState(types[0]);
 
   useEffect(() => {
     async function getPokemonEvolution() {
       const response = await axios.get(
-        `https://pokeapi.co/api/v2/evolution-chain/${params.id}`
+        `https://pokeapi.co/api/v2/pokemon-species/${params.id}`
       );
-      setEvolutions(response.data);
+
+      setPokemonSpecie(response.data);
     }
     getPokemonEvolution();
   }, [params.id]);
 
-  const pokemonsEvolution = evolutions?.chain?.evolves_to[0];
-  const pokemonEvolutionDetails = pokemons.find(
-    (pokemon, index) => pokemon.name === pokemonsEvolution?.species?.name
+  const previousSpecies = pokemons.find(
+    (pokemon) => pokemonSpecie?.evolves_from_species?.name === pokemon.name
   );
 
   const pokemonDetails = pokemons.find(
@@ -61,8 +65,10 @@ export const PokemonDetails = () => {
           <InfoPokemon>
             <h1>{pokemonDetails.name}</h1>
             <div>
-              {pokemonDetails.types.map((item) => (
-                <Pills type={item.type.name}>{item.type.name}</Pills>
+              {pokemonDetails.types.map((item, index) => (
+                <Pills key={index} type={item.type.name}>
+                  {item.type.name}
+                </Pills>
               ))}
             </div>
           </InfoPokemon>
@@ -71,6 +77,7 @@ export const PokemonDetails = () => {
               {types.map((type, index) => (
                 <Tabs
                   key={index}
+                  pokemonType={pokemonType}
                   active={active === type}
                   onClick={() => setActive(type)}
                 >
@@ -83,7 +90,7 @@ export const PokemonDetails = () => {
               {pokemonDetails.stats.map((item, index) => (
                 <TabContentStats key={index}>
                   <StatsName>{item.stat.name}</StatsName>
-                  <span>0{item.effort}</span>
+                  <span>{item.base_stat}</span>
                   <StatsBar
                     baseState={item.base_stat > 100 ? 100 : item.base_stat}
                     type={pokemonType}
@@ -91,8 +98,36 @@ export const PokemonDetails = () => {
                 </TabContentStats>
               ))}
             </TabContent>
-            <TabContent active={active === 'Evolution'}>{active}</TabContent>
-            <TabContent active={active === 'Moves'}>{active}</TabContent>
+            <TabContent active={active === 'Evolution'}>
+              <BoxEvolution>
+                {previousSpecies && (
+                  <>
+                    <img
+                      src={`https://cdn.traction.one/pokedex/pokemon/${previousSpecies.id}.png`}
+                      alt={pokemonDetails.name}
+                    />
+
+                    <img
+                      className='iconImg'
+                      src={arrowRightIcon}
+                      alt='Arrow Right'
+                    />
+                  </>
+                )}
+
+                <img
+                  src={`https://cdn.traction.one/pokedex/pokemon/${pokemonDetails.id}.png`}
+                  alt={pokemonDetails.name}
+                />
+              </BoxEvolution>
+            </TabContent>
+            <TabContent active={active === 'Moves'}>
+              <MovesList>
+                {pokemonDetails.moves.map((m, index) => (
+                  <li key={index}>{m.move.name}</li>
+                ))}
+              </MovesList>
+            </TabContent>
           </TabsContainer>
         </Content>
       </Container>

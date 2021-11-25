@@ -27,7 +27,7 @@ export const WrapperImg = styled.div`
   height: 20rem;
   position: absolute;
   top: 8vh;
-  margin-bottom: 8vh;
+  /* margin-bottom: 10rem; */
 
   img {
     object-fit: cover;
@@ -35,10 +35,10 @@ export const WrapperImg = styled.div`
 `;
 
 export const InfoPokemon = styled.div`
-  margin: 7rem 0 4rem;
+  margin: 8rem 0 4rem;
 
   h1 {
-    font-size: 4rem;
+    font-size: 4.8rem;
     text-transform: capitalize;
     text-align: center;
     margin-bottom: 2rem;
@@ -69,33 +69,49 @@ export const TabsContainer = styled.div`
   width: 100%;
   max-width: 90rem;
   margin-bottom: 4rem;
+  padding: 0 2rem;
 `;
 
 export const Tabs = styled.button`
   width: 100%;
-  font-size: 2rem;
+  font-size: 1.8rem;
+  text-transform: uppercase;
   padding: 1.5rem 0;
   cursor: pointer;
-  opacity: 0.6;
+  /* opacity: 1; */
   background: inherit;
-  border: 0;
+  border: 1px solid transparent;
+  border-image-slice: 1;
   outline: 0;
+  background: ${({ pokemonType, theme }) => '-webkit-' + theme[pokemonType]};
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  border-image-source: ${({ active, pokemonType, theme }) =>
+    active && theme[pokemonType]};
+
   ${({ active }) =>
     active &&
     `
-    border-bottom: 2px solid black;
-    opacity: 1;
-  `}
+    border-radius: 5rem;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+  `};
+
+  /* background: ${({ active, pokemonType, theme }) =>
+    active && theme[pokemonType]}; */
 `;
 export const ButtonGroup = styled.div`
   display: flex;
   justify-content: center;
+  justify-content: space-between;
   width: 100%;
 `;
 
 export const TabContent = styled.div`
   display: none;
   width: 100%;
+  padding: 2rem 0;
 
   ${({ active }) =>
     active &&
@@ -106,7 +122,7 @@ export const TabContent = styled.div`
 
 export const TabContentStats = styled.div`
   width: 100%;
-  padding: 1.5rem 1rem;
+  padding: 1.2rem 0;
   display: flex;
   align-items: center;
   gap: 2rem;
@@ -134,5 +150,37 @@ export const StatsBar = styled.div`
     background: ${({ type, theme }) => (type ? theme[type] : '#444')};
     position: absolute;
     border-radius: 0.5rem;
+  }
+`;
+
+export const BoxEvolution = styled.div`
+  width: 100%;
+  height: 100%;
+
+  padding: 2rem 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+
+  img {
+    max-width: 20rem;
+    height: auto;
+  }
+
+  & .iconImg {
+    width: 6rem;
+    height: auto;
+  }
+`;
+
+export const MovesList = styled.ul`
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+
+  li {
+    border: 1px solid #e3e3e3;
+    padding: 1.5rem 1rem;
   }
 `;
