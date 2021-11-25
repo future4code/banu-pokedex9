@@ -7,7 +7,7 @@ export const Container = styled.div`
 `;
 
 export const FrontCover = styled.div`
-  background: ${({ type, theme }) => (type ? theme[type] : '#444')};
+  background: ${({ type, theme }) => (type ? theme[type].color : '#444')};
   width: 100%;
   height: 30rem;
 `;
@@ -62,7 +62,7 @@ export const Pills = styled.span`
   border-radius: 10rem;
   text-align: center;
   text-transform: uppercase;
-  background: ${({ type, theme }) => (type ? theme[type] : '#444')};
+  background: ${({ type, theme }) => (type ? theme[type].color : '#444')};
 `;
 
 export const TabsContainer = styled.div`
@@ -83,11 +83,12 @@ export const Tabs = styled.button`
   border: 1px solid transparent;
   border-image-slice: 1;
   outline: 0;
-  background: ${({ pokemonType, theme }) => '-webkit-' + theme[pokemonType]};
+  background: ${({ pokemonType, theme }) =>
+    '-webkit-' + theme[pokemonType].color};
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   border-image-source: ${({ active, pokemonType, theme }) =>
-    active && theme[pokemonType]};
+    active && theme[pokemonType].color};
 
   ${({ active }) =>
     active &&
@@ -97,9 +98,6 @@ export const Tabs = styled.button`
     border-left: none;
     border-right: none;
   `};
-
-  /* background: ${({ active, pokemonType, theme }) =>
-    active && theme[pokemonType]}; */
 `;
 export const ButtonGroup = styled.div`
   display: flex;
@@ -147,7 +145,7 @@ export const StatsBar = styled.div`
     content: '';
     height: 0.9rem;
     width: ${({ baseState }) => baseState + '%'};
-    background: ${({ type, theme }) => (type ? theme[type] : '#444')};
+    background: ${({ type, theme }) => (type ? theme[type].color : '#444')};
     position: absolute;
     border-radius: 0.5rem;
   }

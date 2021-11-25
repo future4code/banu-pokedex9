@@ -22,7 +22,7 @@ import {
 
 import arrowRightIcon from '../../img/arrow_right.svg';
 
-const types = ['Stats', 'Evolution', 'Moves'];
+const types = ['Stats', 'Evolves From', 'Moves'];
 
 export const PokemonDetails = () => {
   const params = useParams();
@@ -98,7 +98,7 @@ export const PokemonDetails = () => {
                 </TabContentStats>
               ))}
             </TabContent>
-            <TabContent active={active === 'Evolution'}>
+            <TabContent active={active === 'Evolves From'}>
               <BoxEvolution>
                 {previousSpecies && (
                   <>
