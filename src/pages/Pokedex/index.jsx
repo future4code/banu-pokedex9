@@ -1,5 +1,11 @@
 import React from 'react';
+import { Header } from '../../components/Header';
 
 export const Pokedex = () => {
-  return <div>Pokedex</div>;
+  return (
+    <>
+      <Header />
+      <h1>Pokedex</h1>
+    </>
+  );
 };
