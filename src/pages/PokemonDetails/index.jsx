@@ -26,7 +26,7 @@ const types = ['Stats', 'Evolves From', 'Moves'];
 
 export const PokemonDetails = () => {
   const params = useParams();
-  const { pokemons, pokedex, setPokedex } = useContext(PokemonsContex);
+  const { pokemons } = useContext(PokemonsContex);
   const [pokemonSpecie, setPokemonSpecie] = useState({});
   const [active, setActive] = useState(types[0]);
 
@@ -51,15 +51,21 @@ export const PokemonDetails = () => {
   const pokemonType = pokemonDetails?.types[0]?.type?.name;
 
   const handleAddPokemonInPokedex = (pokemon) => {
-    const pokemonExistInPokedex = pokedex.find((p) => p.id === pokemon.id);
+    let pokedex = JSON.parse(localStorage.getItem('@Pokedex'));
 
-    if (pokemonExistInPokedex) {
-      alert('This pokemon has already been captured');
-      return;
+    if (!pokedex) {
+      pokedex = [];
+      localStorage.setItem('@Pokedex', JSON.stringify([...pokedex, pokemon]));
+      alert('Pokemon captured! :)');
+    } else {
+      const pokemonExists = pokedex.find((p) => p.id === pokemon.id);
+      if (pokemonExists) {
+        alert('This pokemon has already been captured! :(');
+        return;
+      }
+      localStorage.setItem('@Pokedex', JSON.stringify([...pokedex, pokemon]));
+      alert('Pokemon captured! :)');
     }
-
-    setPokedex([...pokedex, pokemon]);
-    alert('Pokemon captured! :)');
   };
 
   if (pokemonDetails)

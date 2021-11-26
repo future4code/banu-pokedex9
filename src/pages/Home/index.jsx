@@ -4,9 +4,9 @@ import { Pokelist } from '../../components/PokeList';
 
 export const Home = () => {
   return (
-    <div>
+    <>
       <Header />
       <Pokelist />
-    </div>
+    </>
   );
 };
