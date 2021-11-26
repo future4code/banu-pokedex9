@@ -19,13 +19,13 @@ Aplicação desenvolvida para consumir a api de pokemons.
 Clone o projeto
 
 ```bash
-  git clone https://link-to-project
+  git clone https://github.com/future4code/banu-pokedex9.git
 ```
 
 Vá até a pasta do projeto
 
 ```bash
-  cd my-project
+  cd banu-pokedex9
 ```
 
 Instale as dependências
