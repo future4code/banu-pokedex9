@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { PokemonsContex } from '../../context/PokemonContext';
+import { CardPokemon } from '../CardPokemon';
 
 import * as S from './styles';
 
@@ -7,16 +8,12 @@ export const Pokelist = () => {
   const { pokemons, handleNextPage, handlePreviousPage, loading } =
     useContext(PokemonsContex);
 
-  // const typesPokemon = pokemons?.map((item) => item.types[0].type);
-
   return (
     <S.Container>
       {loading && <p>Carregando...</p>}
       <S.Content>
         {pokemons?.map((pokemon, index) => (
-          <S.Card key={pokemon.id}>
-            <p>{pokemon.name}</p>
-          </S.Card>
+          <CardPokemon key={index} pokemon={pokemon} />
         ))}
       </S.Content>
 
