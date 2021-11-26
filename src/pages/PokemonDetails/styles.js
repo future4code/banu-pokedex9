@@ -32,6 +32,7 @@ export const FrontCover = styled.div`
       transition: all 0.2s ease;
       display: flex;
       align-items: center;
+      gap: 0.3rem;
 
       &:hover {
         border-color: #e3e3e3;
@@ -63,6 +64,40 @@ export const FrontCover = styled.div`
       margin-top: -3px;
     }
   }
+
+  @media (max-width: 600px) {
+    a,
+    button {
+      font-size: 1.4rem;
+      height: 4rem;
+    }
+
+    button {
+      img {
+        width: 1.8rem;
+        height: 1.8rem;
+        margin-top: -3px;
+      }
+    }
+  }
+
+  @media (max-width: 400px) {
+    a {
+      padding: 1rem;
+
+      span {
+        display: none;
+      }
+    }
+
+    button {
+      padding: 1rem 2rem;
+
+      img {
+        display: none;
+      }
+    }
+  }
 `;
 
 export const Content = styled.div`
@@ -81,6 +116,7 @@ export const WrapperImg = styled.div`
   position: absolute;
   top: 8vh;
   /* margin-bottom: 10rem; */
+  /* border: 1px solid red; */
 
   img {
     object-fit: cover;
@@ -104,6 +140,14 @@ export const InfoPokemon = styled.div`
     justify-content: center;
     gap: 2rem;
   }
+
+  @media (max-width: 600px) {
+    margin: 6rem 0 4rem;
+
+    h1 {
+      font-size: 3.6rem;
+    }
+  }
 `;
 
 export const Pills = styled.span`
@@ -116,6 +160,10 @@ export const Pills = styled.span`
   text-align: center;
   text-transform: uppercase;
   background: ${({ type, theme }) => (type ? theme[type].color : '#444')};
+
+  @media (max-width: 600px) {
+    font-size: 1.4rem;
+  }
 `;
 
 export const TabsContainer = styled.div`
@@ -151,6 +199,10 @@ export const Tabs = styled.button`
     border-left: none;
     border-right: none;
   `};
+
+  @media (max-width: 600px) {
+    font-size: 1.4rem;
+  }
 `;
 export const ButtonGroup = styled.div`
   display: flex;
@@ -196,11 +248,19 @@ export const StatsBar = styled.div`
 
   &::before {
     content: '';
-    height: 0.9rem;
+    height: 0.8rem;
     width: ${({ baseState }) => baseState + '%'};
     background: ${({ type, theme }) => (type ? theme[type].color : '#444')};
     position: absolute;
     border-radius: 0.5rem;
+  }
+
+  @media (max-width: 600px) {
+    height: 0.5rem;
+
+    &::before {
+      height: 0.5rem;
+    }
   }
 `;
 
@@ -223,6 +283,15 @@ export const BoxEvolution = styled.div`
     width: 6rem;
     height: auto;
   }
+
+  @media (max-width: 600px) {
+    flex-direction: column;
+    gap: 2rem;
+
+    & .iconImg {
+      transform: rotate(90deg);
+    }
+  }
 `;
 
 export const MovesList = styled.ul`
@@ -233,5 +302,11 @@ export const MovesList = styled.ul`
   li {
     border: 1px solid #e3e3e3;
     padding: 1.5rem 1rem;
+  }
+
+  @media (max-width: 600px) {
+    li {
+      font-size: 1.4rem;
+    }
   }
 `;

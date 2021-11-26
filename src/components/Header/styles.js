@@ -43,4 +43,16 @@ export const HeaderContent = styled.div`
       }
     }
   }
+
+  @media (max-width: 600px) {
+    flex-direction: column;
+
+    img {
+      max-width: 12rem;
+    }
+
+    a {
+      font-size: 1.4rem;
+    }
+  }
 `;
