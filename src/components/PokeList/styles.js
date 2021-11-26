@@ -10,9 +10,10 @@ export const Content = styled.div`
   max-width: 120rem;
   margin: 0 auto;
   height: 100%;
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
+
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+  justify-items: center;
   gap: 2rem;
 
   padding: 4rem 0;

@@ -75,7 +75,9 @@ export const PokemonDetails = () => {
       <Container>
         <FrontCover type={pokemonType}>
           <div>
-            <Link to='/'>&#129040; Voltar</Link>
+            <Link to='/'>
+              <span>&#129040;</span> Voltar
+            </Link>
             <button
               type='button'
               onClick={() => handleAddPokemonInPokedex(pokemonDetails)}
@@ -84,7 +86,7 @@ export const PokemonDetails = () => {
                 src='	https://www.pngkey.com/png/full/144-1446994_pokeball-clipart-transparent-background-pokeball-png.png'
                 alt='Pokebola'
               />
-              Adiconar a pokedex
+              Add in pokedex
             </button>
           </div>
         </FrontCover>
