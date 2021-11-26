@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import * as S from './styles';
 
@@ -10,11 +11,11 @@ export const Header = () => {
           src='	https://1000logos.net/wp-content/uploads/2017/05/Pokemon-Logo.png'
           alt='Logo pokemon'
         />
-        <img
-          src='	https://www.pngkey.com/png/full/144-1446994_pokeball-clipart-transparent-background-pokeball-png.png'
-          alt='Pokebola'
-          className='pokebola'
-        />
+
+        <nav>
+          <Link to='/'>Home</Link>
+          <Link to='/pokedex'>Pokedex</Link>
+        </nav>
       </S.HeaderContent>
     </S.HeaderContainer>
   );

@@ -34,14 +34,15 @@ export const ButtonGroup = styled.div`
     padding: 1rem 2rem;
     border: none;
     background: #5f606d;
-    box-shadow: 0px 0px 10px rgba(95, 96, 109, 0.7);
+    box-shadow: 0px 5px 10px rgba(95, 96, 109, 0.7);
     border-radius: 2rem;
     color: #fff;
     cursor: pointer;
     transition: all 0.2s ease;
 
     &:hover {
-      box-shadow: 0px 5px 10px rgba(95, 96, 109, 0.7);
+      /* box-shadow: 0px 5px 10px rgba(95, 96, 109, 0.7); */
+      filter: brightness(0.8);
     }
   }
 `;

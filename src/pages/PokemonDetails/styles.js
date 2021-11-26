@@ -15,8 +15,28 @@ export const FrontCover = styled.div`
     width: 100%;
     max-width: 120rem;
     margin: 0 auto;
-    height: 100%;
     padding: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+
+    a {
+      color: #fff;
+      text-decoration: none;
+      text-transform: uppercase;
+      border: 1px solid transparent;
+      height: 4rem;
+      padding: 1rem 3rem;
+      border-radius: 4rem;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+
+      &:hover {
+        border-color: #e3e3e3;
+      }
+    }
   }
 
   button {
@@ -25,7 +45,7 @@ export const FrontCover = styled.div`
     display: flex;
     align-items: center;
     gap: 1rem;
-    margin-left: auto;
+    /* margin-left: auto; */
     color: inherit;
     border-radius: 4.8rem;
     border: 0;

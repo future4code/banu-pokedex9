@@ -21,6 +21,7 @@ import {
 } from './styles';
 
 import arrowRightIcon from '../../img/arrow_right.svg';
+import { Link } from 'react-router-dom';
 
 const types = ['Stats', 'Evolves From', 'Moves'];
 
@@ -56,6 +57,7 @@ export const PokemonDetails = () => {
     if (!pokedex) {
       pokedex = [];
       localStorage.setItem('@Pokedex', JSON.stringify([...pokedex, pokemon]));
+
       alert('Pokemon captured! :)');
     } else {
       const pokemonExists = pokedex.find((p) => p.id === pokemon.id);
@@ -73,6 +75,7 @@ export const PokemonDetails = () => {
       <Container>
         <FrontCover type={pokemonType}>
           <div>
+            <Link to='/'>&#129040; Voltar</Link>
             <button
               type='button'
               onClick={() => handleAddPokemonInPokedex(pokemonDetails)}
